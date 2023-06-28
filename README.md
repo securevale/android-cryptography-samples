@@ -1,0 +1,41 @@
+# Android Crypto Samples
+
+This repo is a collection of code samples that supplement the [official documentation](https://developer.android.com/guide/topics/security/cryptography), explaining how to correctly implement common cryptographic operations on Android.
+
+### Symmetric encryption
+
+- [AES-CBC](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/encryption/symmetric/aes/cbc/AesCbc.kt)
+- [AES-ECB](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/encryption/symmetric/aes/ecb/AesEcb.kt)
+- [AES-GCM](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/encryption/symmetric/aes/gcm/AesGcm.kt)
+
+### Asymmetric encryption
+
+- [RSA](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/encryption/assymetric/rsa/Rsa.kt)
+
+> **Note**
+> This is still WIP. The collection of code samples will be continuously updated with other cryptographic algorithms and more advanced use cases.
+
+## FAQ
+
+- [What key size should I use for AES?](https://crypto.stackexchange.com/questions/5118/is-aes-256-weaker-than-192-and-128-bit-versions?rq=1)
+- [What key size should I use for RSA?](https://stackoverflow.com/questions/589834/what-rsa-key-length-should-i-use-for-my-ssl-certificates/589850#589850)
+- [What is AAD in AES-GCM and what is it used for?](https://crypto.stackexchange.com/questions/89303/what-is-auth-data-in-aes-gcm/89306#89306)
+- [What padding should be used for AES-CBC?](https://crypto.stackexchange.com/a/48631/107088)
+- [Why should I use Base64 for encoding?](https://stackoverflow.com/questions/3538021/why-do-we-use-base64)
+
+## Glossary
+
+- [AES-CBC](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher_block_chaining_(CBC))
+- [AES-ECB](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_codebook_(ECB))
+- [AES-GCM](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Galois/counter_(GCM))
+- [Android Keystore](https://developer.android.com/training/articles/keystore)
+- [Authenticated Encryption](https://en.wikipedia.org/wiki/Authenticated_encryption)
+- [Block Cipher Mode Of Operation](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation)
+- [Crypto Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
+- [Initialization Vector](https://en.wikipedia.org/wiki/Initialization_vector)
+- [Padding](https://en.wikipedia.org/wiki/Padding_(cryptography))
+- [Public-Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
+- [PRNG](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)
+- [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
+- [Semantic Security](https://en.wikipedia.org/wiki/Semantic_security)
+- [Symmetric Cryptography](https://en.wikipedia.org/wiki/Symmetric-key_algorithm)
