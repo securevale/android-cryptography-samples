@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @Suppress("OVERRIDE_DEPRECATION")
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStack()
@@ -55,7 +56,8 @@ class MainActivity : AppCompatActivity() {
         private val fragments = listOf(
             "AES-CBC" to AesCbcFragment(),
             "AES-GCM" to AesGcmFragment(),
-            "RSA" to RsaFragment()
+            "RSA" to RsaFragment(),
+            "FINGERPRINT" to FingerprintFragment()
         )
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

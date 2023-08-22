@@ -12,6 +12,9 @@ This repo is a collection of code samples that supplement the [official document
 
 - [RSA](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/encryption/assymetric/rsa/Rsa.kt)
 
+### Advanced use cases
+- [Biometric-bound encryption](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/advanced/biometric/Biometric.kt)
+
 > **Note**
 > This is still WIP. The collection of code samples will be continuously updated with other cryptographic algorithms and more advanced use cases.
 
@@ -22,6 +25,7 @@ This repo is a collection of code samples that supplement the [official document
 - [What is AAD in AES-GCM and what is it used for?](https://crypto.stackexchange.com/questions/89303/what-is-auth-data-in-aes-gcm/89306#89306)
 - [What padding should be used for AES-CBC?](https://crypto.stackexchange.com/a/48631/107088)
 - [Why should I use Base64 for encoding?](https://stackoverflow.com/questions/3538021/why-do-we-use-base64)
+- [What are the reasons to consider utilizing biometrics paired with a CryptoObject?](https://medium.com/androiddevelopers/using-biometricprompt-with-cryptoobject-how-and-why-aace500ccdb7)
 
 ## Glossary
 
@@ -30,6 +34,7 @@ This repo is a collection of code samples that supplement the [official document
 - [AES-GCM](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Galois/counter_(GCM))
 - [Android Keystore](https://developer.android.com/training/articles/keystore)
 - [Authenticated Encryption](https://en.wikipedia.org/wiki/Authenticated_encryption)
+- [Biometric Security Measure Methodology](https://source.android.com/docs/security/features/biometric/measure)
 - [Block Cipher Mode Of Operation](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation)
 - [Crypto Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 - [Initialization Vector](https://en.wikipedia.org/wiki/Initialization_vector)
