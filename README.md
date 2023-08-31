@@ -1,6 +1,8 @@
 # Android Crypto Samples
 
-This repo is a collection of code samples that supplement the [official documentation](https://developer.android.com/guide/topics/security/cryptography), explaining how to correctly implement common cryptographic operations on Android.
+This repo is a collection of code samples that supplement
+the [official documentation](https://developer.android.com/guide/topics/security/cryptography),
+explaining how to correctly implement common cryptographic operations on Android.
 
 ### Symmetric encryption
 
@@ -12,11 +14,17 @@ This repo is a collection of code samples that supplement the [official document
 
 - [RSA](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/encryption/assymetric/rsa/Rsa.kt)
 
+### Message digest
+
+- [Message Digest](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/hash/MessageDigest.kt)
+
 ### Advanced use cases
+
 - [Biometric-bound encryption](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/advanced/biometric/Biometric.kt)
 
 > **Note**
-> This is still WIP. The collection of code samples will be continuously updated with other cryptographic algorithms and more advanced use cases.
+> This is still WIP. The collection of code samples will be continuously updated with other
+> cryptographic algorithms and more advanced use cases.
 
 ## FAQ
 
@@ -26,6 +34,7 @@ This repo is a collection of code samples that supplement the [official document
 - [What padding should be used for AES-CBC?](https://crypto.stackexchange.com/a/48631/107088)
 - [Why should I use Base64 for encoding?](https://stackoverflow.com/questions/3538021/why-do-we-use-base64)
 - [What are the reasons to consider utilizing biometrics paired with a CryptoObject?](https://medium.com/androiddevelopers/using-biometricprompt-with-cryptoobject-how-and-why-aace500ccdb7)
+- [Why should I avoid using 'pure' cryptographic hash functions for password hashing?](https://security.stackexchange.com/questions/195563/why-is-sha-256-not-good-for-passwords)
 
 ## Glossary
 
@@ -37,7 +46,9 @@ This repo is a collection of code samples that supplement the [official document
 - [Biometric Security Measure Methodology](https://source.android.com/docs/security/features/biometric/measure)
 - [Block Cipher Mode Of Operation](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation)
 - [Crypto Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
+- [Cryptographic Hash Function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
 - [Initialization Vector](https://en.wikipedia.org/wiki/Initialization_vector)
+- [Message Digest](https://csrc.nist.gov/glossary/term/message_digest)
 - [Padding](https://en.wikipedia.org/wiki/Padding_(cryptography))
 - [Public-Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
 - [PRNG](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)

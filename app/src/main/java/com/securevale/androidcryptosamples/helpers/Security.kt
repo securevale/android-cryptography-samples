@@ -10,6 +10,7 @@ fun listProviders() {
     }
 }
 
+// List supported algorithms applying filter.
 fun listSupportedAlgorithms(filter: String = "") {
     for (provider in Security.getProviders()) {
         val name = provider.name
@@ -27,6 +28,22 @@ fun listSupportedAlgorithms(filter: String = "") {
         }
     }
 }
+
+// List supported MessageDigest algorithms.
+fun listMessageDigestAlgorithms() =
+    Log.d("securevale: MessageDigest ", Security.getAlgorithms("MessageDigest").toString())
+
+// List supported Cipher algorithms.
+fun listCipherAlgorithms() =
+    Log.d("securevale: Cipher ", Security.getAlgorithms("Cipher").toString())
+
+// List supported Signature algorithms.
+fun listSignatureAlgorithms() =
+    Log.d("securevale: Signature ", Security.getAlgorithms("Signature").toString())
+
+// List supported Mac algorithms.
+fun listMacAlgorithms() =
+    Log.d("securevale: Mac ", Security.getAlgorithms("Mac").toString())
 
 // List available strong SecureRandom(s).
 fun listStrongRandom() =

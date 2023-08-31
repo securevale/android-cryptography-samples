@@ -11,7 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.securevale.androidcryptosamples.R
-import com.securevale.androidcryptosamples.helpers.listSupportedAlgorithms
+import com.securevale.androidcryptosamples.helpers.listCipherAlgorithms
+import com.securevale.androidcryptosamples.helpers.listMacAlgorithms
+import com.securevale.androidcryptosamples.helpers.listMessageDigestAlgorithms
+import com.securevale.androidcryptosamples.helpers.listSignatureAlgorithms
+import com.securevale.androidcryptosamples.helpers.listStrongRandom
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +23,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        listSupportedAlgorithms()
+        // List just for educational purposes.
+        listMessageDigestAlgorithms()
+        listCipherAlgorithms()
+        listSignatureAlgorithms()
+        listMacAlgorithms()
+        listStrongRandom()
 
         findViewById<RecyclerView>(R.id.recycler).apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
@@ -57,7 +66,8 @@ class MainActivity : AppCompatActivity() {
             "AES-CBC" to AesCbcFragment(),
             "AES-GCM" to AesGcmFragment(),
             "RSA" to RsaFragment(),
-            "FINGERPRINT" to FingerprintFragment()
+            "FINGERPRINT" to FingerprintFragment(),
+            "MESSAGE DIGEST" to MessageDigestFragment()
         )
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
