@@ -67,7 +67,8 @@ class MainActivity : AppCompatActivity() {
             "AES-GCM" to AesGcmFragment(),
             "RSA" to RsaFragment(),
             "FINGERPRINT" to FingerprintFragment(),
-            "MESSAGE DIGEST" to MessageDigestFragment()
+            "MESSAGE DIGEST" to MessageDigestFragment(),
+            "SIGNATURE" to SignatureFragment()
         )
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

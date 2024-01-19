@@ -18,6 +18,10 @@ explaining how to correctly implement common cryptographic operations on Android
 
 - [Message Digest](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/hash/MessageDigest.kt)
 
+### Signature
+
+- [Signing/Verifying](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/signature/Signature.kt)
+
 ### Advanced use cases
 
 - [Biometric-bound encryption](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/advanced/biometric/Biometric.kt)
@@ -35,6 +39,7 @@ explaining how to correctly implement common cryptographic operations on Android
 - [Why should I use Base64 for encoding?](https://stackoverflow.com/questions/3538021/why-do-we-use-base64)
 - [What are the reasons to consider utilizing biometrics paired with a CryptoObject?](https://medium.com/androiddevelopers/using-biometricprompt-with-cryptoobject-how-and-why-aace500ccdb7)
 - [Why should I avoid using 'pure' cryptographic hash functions for password hashing?](https://security.stackexchange.com/questions/195563/why-is-sha-256-not-good-for-passwords)
+- [What is the main difference between Keystore and Keychain?](https://developer.android.com/privacy-and-security/keystore#WhichShouldIUse)
 
 ## Glossary
 
@@ -47,6 +52,7 @@ explaining how to correctly implement common cryptographic operations on Android
 - [Block Cipher Mode Of Operation](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation)
 - [Crypto Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 - [Cryptographic Hash Function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
+- [Digital Signature](https://en.wikipedia.org/wiki/Digital_signature)
 - [Initialization Vector](https://en.wikipedia.org/wiki/Initialization_vector)
 - [Message Digest](https://csrc.nist.gov/glossary/term/message_digest)
 - [Padding](https://en.wikipedia.org/wiki/Padding_(cryptography))

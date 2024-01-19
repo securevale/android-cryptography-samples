@@ -32,11 +32,11 @@ object Rsa {
      * Set all parameters of the key that is to be generated.
      *
      * keystoreAlias - the alias used to identify the key within the Keystore.
-     * purposes - how the key will be used, for encryption and decryption in our case.
+     * purposes - how the key will be used, for signing and verification in our case.
      */
     private val spec: KeyGenParameterSpec = KeyGenParameterSpec.Builder(
         alias,
-        KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
+        KeyProperties.PURPOSE_SIGN or KeyProperties.PURPOSE_VERIFY
     )
         /**
          * Set the key size.
