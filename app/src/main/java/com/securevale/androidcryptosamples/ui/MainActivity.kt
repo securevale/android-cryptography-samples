@@ -65,10 +65,11 @@ class MainActivity : AppCompatActivity() {
         private val fragments = listOf(
             "AES-CBC" to AesCbcFragment(),
             "AES-GCM" to AesGcmFragment(),
-            "RSA" to RsaFragment(),
             "FINGERPRINT" to FingerprintFragment(),
+            "HMAC" to HmacFragment(),
             "MESSAGE DIGEST" to MessageDigestFragment(),
-            "SIGNATURE" to SignatureFragment()
+            "RSA" to RsaFragment(),
+            "SIGNATURE" to SignatureFragment(),
         )
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

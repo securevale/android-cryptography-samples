@@ -22,6 +22,10 @@ explaining how to correctly implement common cryptographic operations on Android
 
 - [Signing/Verifying](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/signature/Signature.kt)
 
+### MAC
+
+- [HMAC](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/mac/Hmac.kt)
+
 ### Advanced use cases
 
 - [Biometric-bound encryption](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/advanced/biometric/Biometric.kt)
@@ -53,8 +57,10 @@ explaining how to correctly implement common cryptographic operations on Android
 - [Crypto Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 - [Cryptographic Hash Function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
 - [Digital Signature](https://en.wikipedia.org/wiki/Digital_signature)
+- [HMAC](https://en.wikipedia.org/wiki/HMAC)
 - [Initialization Vector](https://en.wikipedia.org/wiki/Initialization_vector)
 - [Message Digest](https://csrc.nist.gov/glossary/term/message_digest)
+- [Message Authentication Code](https://en.wikipedia.org/wiki/Message_authentication_code)
 - [Padding](https://en.wikipedia.org/wiki/Padding_(cryptography))
 - [Public-Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
 - [PRNG](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)
