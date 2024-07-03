@@ -57,7 +57,7 @@ object Hmac {
     /**
      * In order to verify integrity and authenticity of a message after creating the original hmac
      * you should generate it again with message you received and compare to the original one (whether they match).
-     * You can check such a sample check in [com.securevale.androidcryptosamples.ui.HmacFragment].
+     * You can check such a sample check in [com.securevale.androidcryptosamples.ui.HmacSampleFragment].
      */
     fun computeHmac(data: String): String {
         // Create Mac instance and initialise it with chosen mode.

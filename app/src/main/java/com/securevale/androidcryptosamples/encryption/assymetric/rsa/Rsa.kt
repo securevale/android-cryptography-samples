@@ -36,7 +36,7 @@ object Rsa {
      */
     private val spec: KeyGenParameterSpec = KeyGenParameterSpec.Builder(
         alias,
-        KeyProperties.PURPOSE_SIGN or KeyProperties.PURPOSE_VERIFY
+        KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
     )
         /**
          * Set the key size.

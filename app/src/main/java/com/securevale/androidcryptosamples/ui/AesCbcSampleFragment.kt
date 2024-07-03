@@ -12,16 +12,15 @@ import androidx.fragment.app.Fragment
 import com.securevale.androidcryptosamples.R
 import com.securevale.androidcryptosamples.encryption.symmetric.aes.cbc.AesCbc
 
-class AesCbcFragment : Fragment() {
+class AesCbcSampleFragment : Fragment() {
+
     private lateinit var encryptionResult: Pair<String, ByteArray>
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
+    ): View = inflater.inflate(R.layout.fragment_main, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,8 +33,14 @@ class AesCbcFragment : Fragment() {
         val input = view.findViewById<EditText>(R.id.input)
 
         view.findViewById<Button>(R.id.encryption_btn).setOnClickListener {
-            encryptionResult = AesCbc.encrypt(input.text.toString())
-            resultField.text = "Encrypted:  $encryptionResult"
+            val text = input.text.toString()
+
+            if (text.isBlank()) {
+                resultField.text = "Nothing to encrypt, put text for encryption"
+            } else {
+                encryptionResult = AesCbc.encrypt(input.text.toString())
+                resultField.text = "Encrypted:  $encryptionResult"
+            }
         }
 
         view.findViewById<Button>(R.id.decryption_btn).setOnClickListener {

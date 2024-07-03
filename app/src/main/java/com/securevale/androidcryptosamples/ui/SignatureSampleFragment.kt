@@ -10,19 +10,17 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.securevale.androidcryptosamples.R
-import com.securevale.androidcryptosamples.mac.Hmac
+import com.securevale.androidcryptosamples.signature.Signature
 
-class HmacFragment : Fragment() {
+class SignatureSampleFragment : Fragment() {
 
-    private var hmac: String? = null
+    private var signature: ByteArray? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
+    ): View = inflater.inflate(R.layout.fragment_main, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,19 +31,19 @@ class HmacFragment : Fragment() {
     private fun initFields(view: View) {
         val resultField = view.findViewById<TextView>(R.id.result)
         val input = view.findViewById<EditText>(R.id.input).apply {
-            hint = "Paste message to create Hmac from"
+            hint = "Paste message to sign"
         }
 
         view.findViewById<Button>(R.id.encryption_btn).let {
-            it.text = "Hmac"
+            it.text = "Sign"
             it.setOnClickListener {
                 val data = input.text.toString()
                 if (data.isBlank()) {
-                    resultField.text = "No text provided to make hmac"
+                    resultField.text = "No text provided to make signing"
                 } else {
-                    hmac = Hmac.computeHmac(data)
+                    signature = Signature.sign(data.toByteArray())
 
-                    resultField.text = hmac
+                    resultField.text = "Signed"
                 }
             }
         }
@@ -57,12 +55,12 @@ class HmacFragment : Fragment() {
                 if (data.isBlank()) {
                     resultField.text = "No text provided to verifying"
                 } else {
-                    val result = Hmac.computeHmac(data)
+                    val result = Signature.verify(data.toByteArray(), signature!!)
 
                     val verificationResult =
-                        if (result == hmac) "Message is valid" else "Message is invalid"
+                        if (result) "Signature is valid" else "Signature is invalid"
 
-                    resultField.text = "$verificationResult"
+                    resultField.text = verificationResult
                 }
             }
         }

@@ -63,13 +63,13 @@ class MainActivity : AppCompatActivity() {
         RecyclerView.Adapter<Adapter.ViewHolder>() {
 
         private val fragments = listOf(
-            "AES-CBC" to AesCbcFragment(),
-            "AES-GCM" to AesGcmFragment(),
-            "FINGERPRINT" to FingerprintFragment(),
-            "HMAC" to HmacFragment(),
-            "MESSAGE DIGEST" to MessageDigestFragment(),
-            "RSA" to RsaFragment(),
-            "SIGNATURE" to SignatureFragment(),
+            "AES-CBC" to AesCbcSampleFragment(),
+            "AES-GCM" to AesGcmSampleFragment(),
+            "FINGERPRINT" to FingerprintSampleFragment(),
+            "HMAC" to HmacSampleFragment(),
+            "MESSAGE DIGEST" to MessageDigestSampleFragment(),
+            "RSA" to RsaSampleFragment(),
+            "SIGNATURE" to SignatureSampleFragment(),
         )
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

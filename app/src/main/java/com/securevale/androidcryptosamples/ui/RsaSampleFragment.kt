@@ -12,16 +12,14 @@ import androidx.fragment.app.Fragment
 import com.securevale.androidcryptosamples.R
 import com.securevale.androidcryptosamples.encryption.assymetric.rsa.Rsa
 
-class RsaFragment : Fragment() {
+class RsaSampleFragment : Fragment() {
     private lateinit var encryptionResult: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
+    ): View = inflater.inflate(R.layout.fragment_main, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,8 +32,13 @@ class RsaFragment : Fragment() {
         val input = view.findViewById<EditText>(R.id.input)
 
         view.findViewById<Button>(R.id.encryption_btn).setOnClickListener {
-            encryptionResult = Rsa.encrypt(input.text.toString())
-            resultField.text = "Encrypted:  $encryptionResult"
+            val text = input.text.toString()
+            if (text.isEmpty()) {
+                resultField.text = "Nothing to encrypt, paste your data"
+            } else {
+                encryptionResult = Rsa.encrypt(input.text.toString())
+                resultField.text = "Encrypted:  $encryptionResult"
+            }
         }
 
         view.findViewById<Button>(R.id.decryption_btn).setOnClickListener {
