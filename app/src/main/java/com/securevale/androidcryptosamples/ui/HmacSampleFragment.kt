@@ -1,66 +1,64 @@
 package com.securevale.androidcryptosamples.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.securevale.androidcryptosamples.R
+import com.securevale.androidcryptosamples.databinding.SampleFragmentBinding
 import com.securevale.androidcryptosamples.mac.Hmac
+import com.securevale.androidcryptosamples.ui.lifecycle.bindWithLifecycle
 
 class HmacSampleFragment : Fragment() {
 
     private var hmac: String? = null
 
+    private var binding: SampleFragmentBinding by bindWithLifecycle()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_main, container, false)
+    ): View = SampleFragmentBinding.inflate(inflater, container, false).apply {
+        binding = this
+    }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initFields(view)
+        initFields()
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun initFields(view: View) {
-        val resultField = view.findViewById<TextView>(R.id.result)
-        val input = view.findViewById<EditText>(R.id.input).apply {
-            hint = "Paste message to create Hmac from"
-        }
+    private fun initFields() = with(binding) {
+        input.hint = getString(R.string.hmac_hint)
 
-        view.findViewById<Button>(R.id.encryption_btn).let {
-            it.text = "Hmac"
+        encryptionBtn.let {
+            it.text = getString(R.string.hmac)
             it.setOnClickListener {
                 val data = input.text.toString()
                 if (data.isBlank()) {
-                    resultField.text = "No text provided to make hmac"
+                    result.text = getString(R.string.nothing_to_hmac)
                 } else {
                     hmac = Hmac.computeHmac(data)
 
-                    resultField.text = hmac
+                    result.text = hmac
                 }
             }
         }
 
-        view.findViewById<Button>(R.id.decryption_btn).let {
-            it.text = "Verify"
-            it.setOnClickListener {
+        decryptionBtn.apply {
+            text = getString(R.string.verify)
+            setOnClickListener {
                 val data = input.text.toString()
                 if (data.isBlank()) {
-                    resultField.text = "No text provided to verifying"
+                    result.text = getString(R.string.nothing_to_verify)
                 } else {
-                    val result = Hmac.computeHmac(data)
+                    val computedHmacResult = Hmac.computeHmac(data)
 
-                    val verificationResult =
-                        if (result == hmac) "Message is valid" else "Message is invalid"
-
-                    resultField.text = verificationResult
+                    result.text = getString(
+                        if (computedHmacResult == hmac) R.string.valid_message else
+                            R.string.invalid_message
+                    )
                 }
             }
         }

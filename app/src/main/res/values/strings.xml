@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">android-crypto-samples</string>
+    <string name="nothing_to_encrypt">Nothing to encrypt. Please provide text for encryption first</string>
+    <string name="nothing_to_decrypt">Nothing to decrypt. Encrypt first</string>
+    <string name="encrypted">Encrypted: %1$s</string>
+    <string name="decrypted">Decrypted: %1$s</string>
+    <string name="valid_signature">Signature is valid</string>
+    <string name="invalid_signature">Signature is invalid</string>
+    <string name="sign">Sign</string>
+    <string name="verify">Verify</string>
+    <string name="signed">Signed</string>
+    <string name="signing_hint">Paste the message to sign</string>
+    <string name="nothing_to_sign">No text provided for signing</string>
+    <string name="nothing_to_verify">No text provided for verifying</string>
+    <string name="valid_message">Message is valid</string>
+    <string name="invalid_message">Message is invalid</string>
+    <string name="hmac_hint">Paste the message to create an HMAC</string>
+    <string name="hmac">HMAC</string>
+    <string name="nothing_to_hmac">No text provided to make HMAC</string>
+    <string name="digest_hint">Paste the message to create digest</string>
+    <string name="digest">Digest</string>
+    <string name="nothing_to_digest">No text provided to calculate the digest</string>
+    <string name="digest_result">Digest: %1$s</string>
+    <string name="biometric_not_available">Biometric is not available (or not enabled) on this device</string>
+    <string name="biometrics_prompt_title">Confirm operation</string>
 </resources>

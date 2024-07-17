@@ -1,66 +1,62 @@
 package com.securevale.androidcryptosamples.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.securevale.androidcryptosamples.R
+import com.securevale.androidcryptosamples.databinding.SampleFragmentBinding
 import com.securevale.androidcryptosamples.signature.Signature
+import com.securevale.androidcryptosamples.ui.lifecycle.bindWithLifecycle
 
 class SignatureSampleFragment : Fragment() {
 
     private var signature: ByteArray? = null
+    private var binding: SampleFragmentBinding by bindWithLifecycle()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_main, container, false)
+    ): View = SampleFragmentBinding.inflate(inflater, container, false).apply {
+        binding = this
+    }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initFields(view)
+        initFields()
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun initFields(view: View) {
-        val resultField = view.findViewById<TextView>(R.id.result)
-        val input = view.findViewById<EditText>(R.id.input).apply {
-            hint = "Paste message to sign"
-        }
+    private fun initFields() = with(binding) {
+        input.hint = getString(R.string.signing_hint)
 
-        view.findViewById<Button>(R.id.encryption_btn).let {
-            it.text = "Sign"
-            it.setOnClickListener {
+        encryptionBtn.apply {
+            text = getString(R.string.sign)
+            setOnClickListener {
                 val data = input.text.toString()
                 if (data.isBlank()) {
-                    resultField.text = "No text provided to make signing"
+                    result.text = getString(R.string.nothing_to_sign)
                 } else {
                     signature = Signature.sign(data.toByteArray())
-
-                    resultField.text = "Signed"
+                    result.text = getString(R.string.signed)
                 }
             }
         }
 
-        view.findViewById<Button>(R.id.decryption_btn).let {
-            it.text = "Verify"
-            it.setOnClickListener {
+        decryptionBtn.apply {
+            text = getString(R.string.verify)
+            setOnClickListener {
                 val data = input.text.toString()
                 if (data.isBlank()) {
-                    resultField.text = "No text provided to verifying"
+                    result.text = getString(R.string.nothing_to_verify)
                 } else {
-                    val result = Signature.verify(data.toByteArray(), signature!!)
+                    val verificationResult = Signature.verify(data.toByteArray(), signature!!)
 
-                    val verificationResult =
-                        if (result) "Signature is valid" else "Signature is invalid"
+                    val verdict =
+                        getString(if (verificationResult) R.string.valid_signature else R.string.invalid_signature)
 
-                    resultField.text = verificationResult
+                    result.text = verdict
                 }
             }
         }

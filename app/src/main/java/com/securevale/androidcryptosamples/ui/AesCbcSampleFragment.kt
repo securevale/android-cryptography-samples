@@ -1,54 +1,53 @@
 package com.securevale.androidcryptosamples.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.securevale.androidcryptosamples.R
+import com.securevale.androidcryptosamples.databinding.SampleFragmentBinding
 import com.securevale.androidcryptosamples.encryption.symmetric.aes.cbc.AesCbc
+import com.securevale.androidcryptosamples.ui.dto.OperationResult
+import com.securevale.androidcryptosamples.ui.lifecycle.bindWithLifecycle
 
 class AesCbcSampleFragment : Fragment() {
 
-    private lateinit var encryptionResult: Pair<String, ByteArray>
+    private var encryptionResult: OperationResult = OperationResult()
+    private var binding: SampleFragmentBinding by bindWithLifecycle()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_main, container, false)
+    ): View = SampleFragmentBinding.inflate(inflater, container, false).apply {
+        binding = this
+    }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initFields(view)
+        initFields()
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun initFields(view: View) {
-        val resultField = view.findViewById<TextView>(R.id.result)
-        val input = view.findViewById<EditText>(R.id.input)
+    private fun initFields() = with(binding) {
 
-        view.findViewById<Button>(R.id.encryption_btn).setOnClickListener {
+        encryptionBtn.setOnClickListener {
             val text = input.text.toString()
 
             if (text.isBlank()) {
-                resultField.text = "Nothing to encrypt, put text for encryption"
+                result.text = getString(R.string.nothing_to_encrypt)
             } else {
                 encryptionResult = AesCbc.encrypt(input.text.toString())
-                resultField.text = "Encrypted:  $encryptionResult"
+                result.text = getString(R.string.encrypted, encryptionResult.data)
             }
         }
 
-        view.findViewById<Button>(R.id.decryption_btn).setOnClickListener {
-            if (!this::encryptionResult.isInitialized) {
-                resultField.text = "Nothing to decrypt, encrypt first"
+        decryptionBtn.setOnClickListener {
+            if (encryptionResult.hasNoData()) {
+                result.text = getString(R.string.nothing_to_decrypt)
             } else {
-                val decrypted = AesCbc.decrypt(encryptionResult.first, encryptionResult.second)
-                resultField.text = "Decrypted: $decrypted"
+                val decrypted = AesCbc.decrypt(encryptionResult.data, encryptionResult.iv)
+                result.text = getString(R.string.decrypted, decrypted)
             }
         }
     }

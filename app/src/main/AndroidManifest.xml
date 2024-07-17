@@ -15,7 +15,7 @@
         <activity
             android:name="com.securevale.androidcryptosamples.ui.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Androidcryptosamples">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -3,6 +3,7 @@ package com.securevale.androidcryptosamples.encryption.symmetric.aes.cbc
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.util.Base64
+import com.securevale.androidcryptosamples.ui.dto.OperationResult
 import java.nio.charset.Charset
 import java.security.Key
 import java.security.KeyStore
@@ -67,7 +68,7 @@ object AesCbc {
             generateKey()
         }
 
-    fun encrypt(data: String): Pair<String, ByteArray> {
+    fun encrypt(data: String): OperationResult {
         /**
          * Create Cipher instance and init it in encryption mode supplying the key.
          *
@@ -94,7 +95,7 @@ object AesCbc {
          * IV needs to be saved alongside with the ciphertext as it will be needed for decryption.
          * The most common way to do it is just to append/prepend IV to the ciphertext itself.
          */
-        return Pair(
+        return OperationResult(
             encoded,
             cipher.iv
         )

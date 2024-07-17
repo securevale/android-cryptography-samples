@@ -10,6 +10,8 @@ import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.securevale.androidcryptosamples.R
+import com.securevale.androidcryptosamples.ui.dto.OperationResult
 import java.security.Key
 import java.security.KeyStore
 import javax.crypto.Cipher
@@ -20,7 +22,7 @@ import javax.crypto.spec.GCMParameterSpec
 /**
  * Sample biometric-bound encryption on Android.
  *
- * While this instance employs the AES-GCM cipher, note that BiometricPrompt.CryptoObject supports other Cipher objects, Mac, and Signature.
+ * While this instance employs the AES-GCM cipher, please note that BiometricPrompt.CryptoObject supports other Ciphers, Mac, and Signature objects.
  */
 
 /**
@@ -57,7 +59,6 @@ fun createPrompt(
 fun biometricAvailable(context: Context) = BiometricManager.from(context)
     .canAuthenticate(BIOMETRIC_STRONG) == BiometricManager.BIOMETRIC_SUCCESS
 
-
 // Encrypt using biometric-bound key.
 fun encryptWithBiometrics(
     fragment: Fragment,
@@ -70,14 +71,14 @@ fun encryptWithBiometrics(
 // Decrypt using biometric-bound key.
 fun decryptWithBiometrics(
     fragment: Fragment,
-    encryptedData: Pair<String, ByteArray>,
+    encryptedData: OperationResult,
     callback: BiometricCallback
 ) {
     doCryptoOperationWithBiometric(
         fragment,
         Purpose.DECRYPTION,
-        encryptedData.first,
-        encryptedData.second,
+        encryptedData.data,
+        encryptedData.iv,
         callback
     )
 }
@@ -184,7 +185,7 @@ private fun doCryptoOperationWithBiometric(
 ) {
     // Prompt info configuration.
     val promptInfo = BiometricPrompt.PromptInfo.Builder()
-        .setTitle("Title")
+        .setTitle(fragment.requireContext().getString(R.string.biometrics_prompt_title))
         /**
          * For more detailed explanation why [BiometricManager.Authenticators.BIOMETRIC_STRONG] is the right choice, check the README.
          */
@@ -214,19 +215,24 @@ private fun doCryptoOperationWithBiometric(
             val cipher = result.cryptoObject!!.cipher!!
             // Encrypt or decrypt based on the selected mode.
             val operationResult = when (mode) {
-                Purpose.ENCRYPTION -> Base64.encodeToString(
-                    cipher.doFinal(data.toByteArray()),
-                    Base64.DEFAULT
-                ) to cipher.iv
+                Purpose.ENCRYPTION -> OperationResult(
+                    Base64.encodeToString(
+                        cipher.doFinal(data.toByteArray()),
+                        Base64.DEFAULT
+                    ),
+                    cipher.iv
+                )
 
-                Purpose.DECRYPTION -> String(
-                    cipher.doFinal(
-                        Base64.decode(
-                            data,
-                            Base64.DEFAULT
+                Purpose.DECRYPTION -> OperationResult(
+                    String(
+                        cipher.doFinal(
+                            Base64.decode(
+                                data,
+                                Base64.DEFAULT
+                            )
                         )
                     )
-                ) to byteArrayOf()
+                )
             }
             callback.onSuccess(operationResult)
         }
@@ -242,7 +248,7 @@ private fun doCryptoOperationWithBiometric(
 interface BiometricCallback {
     fun onError(errorCode: Int, errorString: CharSequence)
     fun onFailed()
-    fun onSuccess(result: Pair<String, ByteArray>)
+    fun onSuccess(result: OperationResult)
 }
 
 // Whether we want to encrypt or decrypt.

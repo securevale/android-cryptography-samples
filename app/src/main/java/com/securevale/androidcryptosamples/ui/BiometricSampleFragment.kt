@@ -1,13 +1,9 @@
 package com.securevale.androidcryptosamples.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.securevale.androidcryptosamples.R
@@ -16,82 +12,78 @@ import com.securevale.androidcryptosamples.advanced.biometric.Purpose
 import com.securevale.androidcryptosamples.advanced.biometric.biometricAvailable
 import com.securevale.androidcryptosamples.advanced.biometric.decryptWithBiometrics
 import com.securevale.androidcryptosamples.advanced.biometric.encryptWithBiometrics
+import com.securevale.androidcryptosamples.databinding.SampleFragmentBinding
+import com.securevale.androidcryptosamples.ui.dto.OperationResult
+import com.securevale.androidcryptosamples.ui.lifecycle.bindWithLifecycle
 
-class FingerprintSampleFragment : Fragment() {
+class BiometricSampleFragment : Fragment() {
 
-    private lateinit var operationResult: Pair<String, ByteArray>
-
-    private lateinit var resultField: TextView
+    private var operationResult: OperationResult = OperationResult()
 
     private var mode = Purpose.ENCRYPTION
+
+    private var binding: SampleFragmentBinding by bindWithLifecycle()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_main, container, false)
+    ): View = SampleFragmentBinding.inflate(inflater, container, false).apply {
+        binding = this
+    }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initFields(view)
+        initFields()
     }
 
-    private fun initFields(view: View) {
-        resultField = view.findViewById(R.id.result)
-        val input = view.findViewById<EditText>(R.id.input)
-
-        view.findViewById<Button>(R.id.encryption_btn).setOnClickListener {
+    private fun initFields() = with(binding) {
+        encryptionBtn.setOnClickListener {
             encrypt(input.text.toString())
             mode = Purpose.ENCRYPTION
         }
 
-        view.findViewById<Button>(R.id.decryption_btn).setOnClickListener {
+        decryptionBtn.setOnClickListener {
             decrypt(operationResult)
             mode = Purpose.DECRYPTION
         }
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun reloadViews(mode: Purpose) {
-        if (!this::operationResult.isInitialized) {
-            resultField.text = "Nothing to decrypt, encrypt first"
-        } else {
-            when (mode) {
-                Purpose.ENCRYPTION -> {
-                    resultField.text = "Encrypted: ${operationResult.first}"
-                }
+    private fun updateViews(mode: Purpose) = with(binding) {
+        when (mode) {
+            Purpose.ENCRYPTION -> {
+                result.text = getString(R.string.encrypted, operationResult.data)
+            }
 
-                Purpose.DECRYPTION -> {
-                    resultField.text = "Decrypted: ${operationResult.first}"
-                }
+            Purpose.DECRYPTION -> {
+                result.text = getString(R.string.decrypted, operationResult.data)
             }
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun encrypt(data: String) {
         if (biometricAvailable(requireContext())) {
-            if(data.isBlank()){
-                resultField.text = "Nothing to encrypt, put text for encryption"
-            }else{
+            if (data.isBlank()) {
+                binding.result.text = getString(R.string.nothing_to_encrypt)
+            } else {
                 encryptWithBiometrics(this, data, callback)
             }
         } else {
             Toast.makeText(
                 requireContext(),
-                "Biometric not available (or not enabled) on this device",
+                getString(R.string.biometric_not_available),
                 Toast.LENGTH_LONG
             ).show()
         }
     }
 
-    private fun decrypt(encryptedData: Pair<String, ByteArray>) {
+    private fun decrypt(encryptedData: OperationResult) {
         if (biometricAvailable(requireContext())) {
             decryptWithBiometrics(this, encryptedData, callback)
         } else {
             Toast.makeText(
                 requireContext(),
-                "Biometric not available (or not enabled) on this device",
+                getString(R.string.biometric_not_available),
                 Toast.LENGTH_LONG
             ).show()
         }
@@ -100,16 +92,16 @@ class FingerprintSampleFragment : Fragment() {
     private val callback = object : BiometricCallback {
         override fun onError(errorCode: Int, errorString: CharSequence) {
             Toast.makeText(requireContext(), errorString, Toast.LENGTH_LONG).show()
-            // Something went wrong, handle accordingly.
+            // Something went wrong, you need to handle accordingly.
         }
 
         override fun onFailed() {
-            // Something went wrong, handle accordingly.
+            // Something went wrong, you need to handle accordingly.
         }
 
-        override fun onSuccess(result: Pair<String, ByteArray>) {
+        override fun onSuccess(result: OperationResult) {
             operationResult = result
-            reloadViews(mode)
+            updateViews(mode)
         }
     }
 }
