@@ -23,4 +23,7 @@
     <string name="digest_result">Digest: %1$s</string>
     <string name="biometric_not_available">Biometric is not available (or not enabled) on this device</string>
     <string name="biometrics_prompt_title">Confirm operation</string>
+    <string name="key_derivation_hint">Paste password to derive key from</string>
+    <string name="no_password_to_derive_key_from">No password for key derivation</string>
+    <string name="decryption_with_derived_key_failed">Decryption failed, have you changed the typed password?</string>
 </resources>

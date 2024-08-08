@@ -9,6 +9,7 @@ import com.securevale.androidcryptosamples.ui.AesCbcSampleFragment
 import com.securevale.androidcryptosamples.ui.AesGcmSampleFragment
 import com.securevale.androidcryptosamples.ui.BiometricSampleFragment
 import com.securevale.androidcryptosamples.ui.HmacSampleFragment
+import com.securevale.androidcryptosamples.ui.KeyDerivationSampleFragment
 import com.securevale.androidcryptosamples.ui.MessageDigestSampleFragment
 import com.securevale.androidcryptosamples.ui.RsaSampleFragment
 import com.securevale.androidcryptosamples.ui.SignatureSampleFragment
@@ -24,6 +25,7 @@ class SamplesAdapter(private val clickListener: SampleClickListener) :
         "MESSAGE DIGEST" to MessageDigestSampleFragment::class.java,
         "RSA" to RsaSampleFragment::class.java,
         "SIGNATURE" to SignatureSampleFragment::class.java,
+        "KEY DERIVATION" to KeyDerivationSampleFragment::class.java
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
@@ -49,6 +51,6 @@ class SamplesAdapter(private val clickListener: SampleClickListener) :
     }
 
     interface SampleClickListener {
-        fun onSampleClick(sampleFragment : Class<out Fragment>)
+        fun onSampleClick(sampleFragment: Class<out Fragment>)
     }
 }

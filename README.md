@@ -28,6 +28,7 @@ explaining how to correctly implement common cryptographic operations on Android
 
 ### Advanced use cases
 
+- [Key-derivation](https://github.com/securevale/android-cryptography-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/derivation/KeyDerivation.kt)
 - [Biometric-bound encryption](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/advanced/biometric/Biometric.kt)
 
 > **Note**
@@ -44,6 +45,8 @@ explaining how to correctly implement common cryptographic operations on Android
 - [What are the reasons to consider utilizing biometrics paired with a CryptoObject?](https://medium.com/androiddevelopers/using-biometricprompt-with-cryptoobject-how-and-why-aace500ccdb7)
 - [Why should I avoid using 'pure' cryptographic hash functions for password hashing?](https://security.stackexchange.com/questions/195563/why-is-sha-256-not-good-for-passwords)
 - [What is the main difference between Keystore and Keychain?](https://developer.android.com/privacy-and-security/keystore#WhichShouldIUse)
+- [What is the purpose of salt in Key Derivation?](https://crypto.stackexchange.com/questions/62807/why-do-some-key-derivation-functions-like-pbkdf2-use-a-salt)
+- [Is HMAC-SHA1 still considered secure?](https://crypto.stackexchange.com/questions/26510/why-is-hmac-sha1-still-considered-secure)
 
 ## Glossary
 
@@ -59,11 +62,14 @@ explaining how to correctly implement common cryptographic operations on Android
 - [Digital Signature](https://en.wikipedia.org/wiki/Digital_signature)
 - [HMAC](https://en.wikipedia.org/wiki/HMAC)
 - [Initialization Vector](https://en.wikipedia.org/wiki/Initialization_vector)
+- [Key derivation](https://en.wikipedia.org/wiki/Key_derivation_function)
 - [Message Digest](https://csrc.nist.gov/glossary/term/message_digest)
 - [Message Authentication Code](https://en.wikipedia.org/wiki/Message_authentication_code)
 - [Padding](https://en.wikipedia.org/wiki/Padding_(cryptography))
 - [Public-Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
+- [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2)
 - [PRNG](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)
 - [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
+- [Salt](https://en.wikipedia.org/wiki/Salt_(cryptography))
 - [Semantic Security](https://en.wikipedia.org/wiki/Semantic_security)
 - [Symmetric Cryptography](https://en.wikipedia.org/wiki/Symmetric-key_algorithm)
