@@ -1,4 +1,4 @@
-# Android Crypto Samples
+# Android Cryptography Samples
 
 This repo is a collection of code samples that supplement
 the [official documentation](https://developer.android.com/guide/topics/security/cryptography),
@@ -31,7 +31,7 @@ explaining how to correctly implement common cryptographic operations on Android
 - [Key-derivation](https://github.com/securevale/android-cryptography-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/derivation/KeyDerivation.kt)
 - [Biometric-bound encryption](https://github.com/securevale/android-crypto-samples/blob/master/app/src/main/java/com/securevale/androidcryptosamples/advanced/biometric/Biometric.kt)
 
-> **Note**
+> [!NOTE]
 > This is still WIP. The collection of code samples will be continuously updated with other
 > cryptographic algorithms and more advanced use cases.
 
